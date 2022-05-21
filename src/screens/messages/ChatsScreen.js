@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
-import {ChatItem} from "./components/ChatItem";
+import {ChatItem} from "../../components/ChatItem";
 
 const DATA = [
     {
