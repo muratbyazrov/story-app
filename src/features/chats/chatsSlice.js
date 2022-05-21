@@ -24,11 +24,123 @@ export const chatsSlice = createSlice({
                     },
                     {
                         messageId: 2,
+                        senderId: 2,
+                        createDttm: '2022-01-01',
+                        messageText: 'You may use the CLI in your terminal or use the web based interface (it opens automatically by default, or you can press d from the CLI to open it on demand). The web interface enables you to use some of the most often used features from a quick-to-use graphical interface. We’ve only scratched the surface of what expo-cli can do so far. Be sure to check out all the possible commands below!',
+                        isRead: false,
+                    },
+                    {
+                        messageId: 1,
                         senderId: 1,
                         createDttm: '2022-01-01',
                         messageText: 'Привет! Как твои дела?)',
+                        isRead: true,
+                    },
+                    {
+                        messageId: 2,
+                        senderId: 2,
+                        createDttm: '2022-01-01',
+                        messageText: 'Привет! Как твои дела?)',
                         isRead: false,
-                    }
+                    },
+                    {
+                        messageId: 1,
+                        senderId: 1,
+                        createDttm: '2022-01-01',
+                        messageText: 'Привет! Как твои дела?)',
+                        isRead: true,
+                    },
+                    {
+                        messageId: 2,
+                        senderId: 2,
+                        createDttm: '2022-01-01',
+                        messageText: 'Привет! Как твои дела?)',
+                        isRead: false,
+                    },
+                    {
+                        messageId: 1,
+                        senderId: 1,
+                        createDttm: '2022-01-01',
+                        messageText: 'Привет! Как твои дела?)',
+                        isRead: true,
+                    },
+                    {
+                        messageId: 2,
+                        senderId: 2,
+                        createDttm: '2022-01-01',
+                        messageText: 'Привет! Как твои дела?)',
+                        isRead: false,
+                    },
+                    {
+                        messageId: 1,
+                        senderId: 1,
+                        createDttm: '2022-01-01',
+                        messageText: 'Привет! Как твои дела?)',
+                        isRead: true,
+                    },
+                    {
+                        messageId: 2,
+                        senderId: 2,
+                        createDttm: '2022-01-01',
+                        messageText: 'Привет! Как твои дела?)',
+                        isRead: false,
+                    },
+                    {
+                        messageId: 1,
+                        senderId: 1,
+                        createDttm: '2022-01-01',
+                        messageText: 'Привет! Как твои дела?)',
+                        isRead: true,
+                    },
+                    {
+                        messageId: 2,
+                        senderId: 2,
+                        createDttm: '2022-01-01',
+                        messageText: 'Привет! Как твои дела?)',
+                        isRead: false,
+                    },
+                    {
+                        messageId: 1,
+                        senderId: 1,
+                        createDttm: '2022-01-01',
+                        messageText: 'Привет! Как твои дела?)',
+                        isRead: true,
+                    },
+                    {
+                        messageId: 2,
+                        senderId: 2,
+                        createDttm: '2022-01-01',
+                        messageText: 'Привет! Как твои дела?)',
+                        isRead: false,
+                    },
+                    {
+                        messageId: 1,
+                        senderId: 1,
+                        createDttm: '2022-01-01',
+                        messageText: 'Привет! Как твои дела?)',
+                        isRead: true,
+                    },
+                    {
+                        messageId: 2,
+                        senderId: 2,
+                        createDttm: '2022-01-01',
+                        messageText: 'Привет! Как твои дела?)',
+                        isRead: false,
+                    },
+                    {
+                        messageId: 1,
+                        senderId: 1,
+                        createDttm: '2022-01-01',
+                        messageText: 'Привет! Как твои дела?)',
+                        isRead: true,
+                    },
+                    {
+                        messageId: 2,
+                        senderId: 2,
+                        createDttm: '2022-01-01',
+                        messageText: 'Привет! Как твои дела?)',
+                        isRead: false,
+                    },
                 ]
             },
             {
@@ -50,7 +162,7 @@ export const chatsSlice = createSlice({
                     },
                     {
                         messageId: 2,
-                        senderId: 1,
+                        senderId: 2,
                         createDttm: '2022-01-01',
                         messageText: 'Привет! Как твои дела?)',
                         isRead: false,
@@ -76,7 +188,7 @@ export const chatsSlice = createSlice({
                     },
                     {
                         messageId: 2,
-                        senderId: 1,
+                        senderId: 2,
                         createDttm: '2022-01-01',
                         messageText: 'Привет! Как твои дела?)',
                         isRead: false,
@@ -102,7 +214,7 @@ export const chatsSlice = createSlice({
                     },
                     {
                         messageId: 2,
-                        senderId: 1,
+                        senderId: 2,
                         createDttm: '2022-01-01',
                         messageText: 'Привет! Как твои дела?)',
                         isRead: false,
@@ -128,7 +240,7 @@ export const chatsSlice = createSlice({
                     },
                     {
                         messageId: 2,
-                        senderId: 1,
+                        senderId: 2,
                         createDttm: '2022-01-01',
                         messageText: 'Привет! Как твои дела?)',
                         isRead: false,
@@ -154,7 +266,7 @@ export const chatsSlice = createSlice({
                     },
                     {
                         messageId: 2,
-                        senderId: 1,
+                        senderId: 2,
                         createDttm: '2022-01-01',
                         messageText: 'Привет! Как твои дела?)',
                         isRead: false,
@@ -180,7 +292,7 @@ export const chatsSlice = createSlice({
                     },
                     {
                         messageId: 2,
-                        senderId: 1,
+                        senderId: 2,
                         createDttm: '2022-01-01',
                         messageText: 'Привет! Как твои дела?)',
                         isRead: false,
@@ -206,7 +318,7 @@ export const chatsSlice = createSlice({
                     },
                     {
                         messageId: 2,
-                        senderId: 1,
+                        senderId: 2,
                         createDttm: '2022-01-01',
                         messageText: 'Привет! Как твои дела?)',
                         isRead: false,
@@ -232,7 +344,7 @@ export const chatsSlice = createSlice({
                     },
                     {
                         messageId: 2,
-                        senderId: 1,
+                        senderId: 2,
                         createDttm: '2022-01-01',
                         messageText: 'Привет! Как твои дела?)',
                         isRead: false,
@@ -258,7 +370,7 @@ export const chatsSlice = createSlice({
                     },
                     {
                         messageId: 2,
-                        senderId: 1,
+                        senderId: 2,
                         createDttm: '2022-01-01',
                         messageText: 'Привет! Как твои дела?)',
                         isRead: false,
@@ -277,7 +389,6 @@ export const chatsSlice = createSlice({
         },
         setActiveChat: (state, action) => {
             state.activeChat = state.list.find(({chatId}) => chatId === action.payload);
-            console.log(11, state.activeChat)
         }
     }
 });

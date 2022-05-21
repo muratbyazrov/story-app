@@ -26,5 +26,7 @@ const styles = StyleSheet.create({
     },
     flatList: {
         width: '100%',
+        position: 'relative',
+        padding: 5
     }
 });

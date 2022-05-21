@@ -6,24 +6,37 @@ export const MessageItem = ({data: {item: {createDttm, isRead, messageText, send
     const userId = useSelector(state => state.user.userId);
 
     return (
-        <Pressable style={styles.container}>
-            <Text>{messageText} {createDttm}</Text>
+        <Pressable style={userId === senderId ? styles.cameMessage : styles.myMessage}>
+            <Text style={styles.messageText}>{messageText}</Text>
+            <Text style={styles.createDttm}>{createDttm}</Text>
         </Pressable>
     )
+};
+
+const commonMessageStyles = {
+    justifyContent: 'space-between',
+    padding: 10,
+    borderRadius: 15,
+    maxWidth: '70%',
+    marginBottom: 8,
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flexDirection: "row",
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        height: 85,
-        width: '100%',
-        backgroundColor: "white",
-        borderBottomWidth: 1,
-        borderColor: 'grey',
-        padding: 10,
-        position: 'relative'
+    myMessage: {
+        ...commonMessageStyles,
+        backgroundColor: "#B5FF18",
+        marginLeft: '30%',
     },
-
+    cameMessage: {
+        ...commonMessageStyles,
+        backgroundColor: "white",
+    },
+    createDttm: {
+        color: 'gray',
+        fontSize: 10,
+        marginLeft: '78%'
+    },
+    messageText: {
+        left: 0
+    }
 });
