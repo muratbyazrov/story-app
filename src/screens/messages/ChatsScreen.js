@@ -7,12 +7,14 @@ import {addChat, removeChat, updateChat} from '../../features/chats/chatsSlice.j
 export const ChatsScreen = ({navigation}) => {
     const renderItem = (data) => <ChatItem data={{navigation, data}}/>;
     const chats = useSelector(state => state.chats.list);
+    const dispatch = useDispatch();
 
     return (
         <View style={styles.container}>
             <FlatList
                 style={styles.flatList}
-                data={chats} renderItem={renderItem}
+                data={chats}
+                renderItem={renderItem}
                 keyExtractor={item => item.id}/>
         </View>
     )

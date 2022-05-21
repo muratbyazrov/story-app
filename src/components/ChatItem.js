@@ -1,12 +1,19 @@
-import React from 'react'
-import {Pressable, Image, Text, StyleSheet, View} from 'react-native'
+import React from 'react';
+import {Pressable, Image, Text, StyleSheet, View} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {removeChat, setActiveChat} from '../features/chats/chatsSlice.js'
 
 export const ChatItem = ({data: {navigation, data: {item}}}) => {
-    const {sender: {photoUri, name}, messages} = item;
+    const {chatId, sender: {photoUri, name}, messages} = item;
+    const dispatch = useDispatch();
 
     return (
         <Pressable style={styles.container}
-                   onPress={() => navigation.navigate('Messages')}>
+                   onPress={() => {
+                       navigation.navigate('Messages');
+                       return dispatch(setActiveChat(chatId));
+                   }}
+                   onLongPress={() => dispatch(removeChat(chatId))}>
             <Image style={styles.image} source={{uri: photoUri}}/>
             <View style={styles.nameAndMessage}>
                 <Text style={styles.name}>{`${name}`}</Text>
@@ -30,9 +37,7 @@ const styles = StyleSheet.create({
         padding: 10,
         position: 'relative'
     },
-    nameAndMessage: {
-
-    },
+    nameAndMessage: {},
     image: {
         width: 60,
         height: 60,

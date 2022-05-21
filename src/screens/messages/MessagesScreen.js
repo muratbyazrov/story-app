@@ -1,10 +1,19 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {useSelector} from 'react-redux';
+import {MessageItem} from "../../components/MessageItem";
 
-export const MessagesScreen = ({messages}) => {
-    console.log(messages)
+export const MessagesScreen = () => {
+    const renderItem = (data) => <MessageItem data={data}/>
+    const messages = useSelector(state => state.chats.activeChat.messages);
+
     return <View style={styles.center}>
-        <Text>MessagesScreen!</Text>
+        <FlatList
+            style={styles.flatList}
+            data={messages}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}>
+        </FlatList>
     </View>
 }
 
@@ -15,4 +24,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    flatList: {
+        width: '100%',
+    }
 });

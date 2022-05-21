@@ -3,6 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 export const chatsSlice = createSlice({
     name: 'chats',
     initialState: {
+        activeChat: {},
         list: [
             {
                 chatId: 1,
@@ -31,7 +32,7 @@ export const chatsSlice = createSlice({
                 ]
             },
             {
-                chatId: 1,
+                chatId: 2,
                 sender: {
                     senderId: 1,
                     name: 'Мурат',
@@ -57,7 +58,7 @@ export const chatsSlice = createSlice({
                 ]
             },
             {
-                chatId: 1,
+                chatId: 3,
                 sender: {
                     senderId: 1,
                     name: 'Мурат',
@@ -83,7 +84,7 @@ export const chatsSlice = createSlice({
                 ]
             },
             {
-                chatId: 1,
+                chatId: 4,
                 sender: {
                     senderId: 1,
                     name: 'Мурат',
@@ -109,7 +110,7 @@ export const chatsSlice = createSlice({
                 ]
             },
             {
-                chatId: 1,
+                chatId: 5,
                 sender: {
                     senderId: 1,
                     name: 'Мурат',
@@ -135,7 +136,7 @@ export const chatsSlice = createSlice({
                 ]
             },
             {
-                chatId: 1,
+                chatId: 6,
                 sender: {
                     senderId: 1,
                     name: 'Мурат',
@@ -161,7 +162,7 @@ export const chatsSlice = createSlice({
                 ]
             },
             {
-                chatId: 1,
+                chatId: 7,
                 sender: {
                     senderId: 1,
                     name: 'Мурат',
@@ -187,7 +188,7 @@ export const chatsSlice = createSlice({
                 ]
             },
             {
-                chatId: 1,
+                chatId: 8,
                 sender: {
                     senderId: 1,
                     name: 'Мурат',
@@ -213,7 +214,7 @@ export const chatsSlice = createSlice({
                 ]
             },
             {
-                chatId: 1,
+                chatId: 9,
                 sender: {
                     senderId: 1,
                     name: 'Мурат',
@@ -239,7 +240,7 @@ export const chatsSlice = createSlice({
                 ]
             },
             {
-                chatId: 1,
+                chatId: 10,
                 sender: {
                     senderId: 1,
                     name: 'Мурат',
@@ -265,17 +266,21 @@ export const chatsSlice = createSlice({
                 ]
             },
         ]
-    }
-    ,
+    },
     reducers: {
         addChat: state => {
         },
-        removeChat: state => {
+        removeChat: (state, action) => {
+            state.list = state.list.filter(({chatId}) => chatId !== action.payload);
         },
         updateChat: state => {
+        },
+        setActiveChat: (state, action) => {
+            state.activeChat = state.list.find(({chatId}) => chatId === action.payload);
+            console.log(11, state.activeChat)
         }
     }
 });
 
-export const {addChat, removeChat, updateChat} = chatsSlice.actions;
+export const {addChat, removeChat, updateChat, setActiveChat} = chatsSlice.actions;
 export default chatsSlice.reducer;
