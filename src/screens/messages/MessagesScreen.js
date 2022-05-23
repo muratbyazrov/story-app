@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 import {useSelector} from 'react-redux';
 import {MessageItem} from "../../components/MessageItem";
+import {MessageInput} from "../../components/MessageInput";
 
 export const MessagesScreen = () => {
     const renderItem = (data) => <MessageItem data={data}/>
@@ -14,6 +15,7 @@ export const MessagesScreen = () => {
             renderItem={renderItem}
             keyExtractor={item => item.id}>
         </FlatList>
+        <MessageInput />
     </View>
 }
 
@@ -23,6 +25,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#03D2FF',
         alignItems: 'center',
         justifyContent: 'center',
+        width: '100%'
     },
     flatList: {
         width: '100%',
