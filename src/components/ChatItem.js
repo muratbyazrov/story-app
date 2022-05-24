@@ -12,8 +12,7 @@ export const ChatItem = ({data: {navigation, data: {item}}}) => {
                    onPress={() => {
                        navigation.navigate('Messages');
                        return dispatch(setActiveChat(chatId));
-                   }}
-                   onLongPress={() => dispatch(removeChat(chatId))}>
+                   }}>
             <Image style={styles.image} source={{uri: photoUri}}/>
             <View style={styles.nameAndMessage}>
                 <Text style={styles.name}>{`${name}`}</Text>

@@ -11,7 +11,7 @@ export const MessageInput = () => {
                 multiline={true}/>
             <Ionicons.Button
                 style={styles.button}
-                color={'white'}
+                color={'gray'}
                 name="send"/>
         </SafeAreaView>
     )
@@ -33,8 +33,9 @@ const styles = StyleSheet.create({
         justifyContent: "space-between"
     },
     button: {
-        backgroundColor: 'black',
+        backgroundColor: 'white',
         height: 45,
         width: '100%',
+        zIndex: 2
     }
 });

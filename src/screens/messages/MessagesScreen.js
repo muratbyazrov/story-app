@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, StyleSheet, FlatList} from 'react-native';
 import {useSelector} from 'react-redux';
 import {MessageItem} from "../../components/MessageItem";
 import {MessageInput} from "../../components/MessageInput";
