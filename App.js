@@ -9,6 +9,10 @@ import {Provider} from 'react-redux';
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
+// start server clients
+const {Servers} = require('./src/servers/index.js');
+new Servers();
+
 function App() {
     return (
         <Provider store={store}>
