@@ -3,7 +3,6 @@ const {
         ws: {host, port}, http: {host: httpHost, port: httpPort, path}
     }
 } = require('../config.js');
-const axios = require('axios').default;
 
 class Base {
     constructor() {
@@ -36,8 +35,14 @@ class Base {
 
     wsAuth(sessionId) {
         this.ws({
-            domain: "users", event: "createUser", params: {
-                wsSessionId: sessionId, userId: "5"
+            domain: "users",
+            event: "createUser",
+            params: {
+                wsSessionId: sessionId,
+                userId: "5",
+                firstName: 'Murat',
+                age: 28,
+                photoUrl: 'https://sun9-26.userapi.com/s/v1/if1/MI4EL-KWavrMGs9C_f8R_6CCSrFt--ftOpAnORW1fbLKWrXZQ4N4WeVeyeBhbvJGjrdDTWJr.jpg?size=2560x1706&quality=96&type=album'
             }
         })
     }
@@ -46,14 +51,21 @@ class Base {
         this.wsServer.send(JSON.stringify(data));
     }
 
-    http(data) {
-        axios.post(`${httpHost}:${httpPort}/${path}`, data)
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
+    async http(data) {
+        try {
+            const response = await fetch(`${httpHost}:${httpPort}/${path}`, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
             });
+
+            return response.json();
+        } catch (error) {
+            console.error(error);
+        }
     }
 }
 

@@ -1,11 +1,17 @@
 import React from 'react';
 import {Pressable, Image, Text, StyleSheet, View} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {removeChat, setActiveChat} from '../features/chats/chatsSlice.js'
+import {setActiveChat} from '../features/chats/chatsSlice.js'
 
 export const ChatItem = ({data: {navigation, data: {item}}}) => {
-    const {chatId, sender: {photoUri, name}, messages} = item;
     const dispatch = useDispatch();
+    const {
+        chatId,
+        senderAge,
+        senderName,
+        senderPhotoUrl,
+        messages
+    } = item;
 
     return (
         <Pressable style={styles.container}
@@ -13,9 +19,9 @@ export const ChatItem = ({data: {navigation, data: {item}}}) => {
                        navigation.navigate('Messages');
                        return dispatch(setActiveChat(chatId));
                    }}>
-            <Image style={styles.image} source={{uri: photoUri}}/>
+            <Image style={styles.image} source={{uri: senderPhotoUrl}}/>
             <View style={styles.nameAndMessage}>
-                <Text style={styles.name}>{`${name}`}</Text>
+                <Text style={styles.name}>{`${senderName}, ${senderAge}`}</Text>
                 <Text style={styles.message}>{messages[0].messageText}</Text>
             </View>
             <Text style={styles.createDttm}>{messages[0].createDttm}</Text>

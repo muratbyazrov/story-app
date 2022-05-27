@@ -1,13 +1,11 @@
 import React from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
 import {ChatItem} from "../../components/ChatItem";
-import {useSelector, useDispatch} from 'react-redux';
-import {addChat, removeChat, updateChat} from '../../features/chats/chatsSlice.js';
+import {useSelector} from 'react-redux';
 
 export const ChatsScreen = ({navigation}) => {
-    const renderItem = (data) => <ChatItem data={{navigation, data}}/>;
     const chats = useSelector(state => state.chats.list);
-    const dispatch = useDispatch();
+    const renderItem = (data) => <ChatItem data={{navigation, data}}/>;
 
     return (
         <View style={styles.container}>
@@ -19,7 +17,6 @@ export const ChatsScreen = ({navigation}) => {
         </View>
     )
 }
-
 
 const styles = StyleSheet.create({
     container: {
