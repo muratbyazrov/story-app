@@ -10,4 +10,4 @@ class Servers {
     }
 }
 
-module.exports = {Servers}
+module.exports = {servers: new Servers()}
