@@ -1,10 +1,10 @@
-const {MessengerApi} = require("./messenger-api");
+const {Messenger} = require("./messenger");
 const {Account} = require("./account");
 const {Photo} = require("./photo");
 
 class Servers {
     constructor() {
-        this.messengerApi = new MessengerApi();
+        this.messenger = new Messenger();
         this.account = new Account();
         this.photo = new Photo();
     }

@@ -12,19 +12,17 @@ export const chatsSlice = createSlice({
 
         },
         setChats: async state => {
-            const chats = await servers.messengerApi.getChats({
+            const chats = await servers.messenger.getChats({
                 limit: 100,
                 userId: '5',
             });
 
             for (const chat of chats) {
-                chat.messages = await servers.messengerApi.getMessages({
+                chat.messages = await servers.messenger.getMessages({
                     limit: 1,
                     chatId: chat.chatId
                 })
             }
-
-            state.list = chats;
         },
         removeChat: (state, action) => {
             state.list = state.list.filter(({chatId}) => chatId !== action.payload);

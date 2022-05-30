@@ -1,6 +1,6 @@
 const {Base} = require("./base");
 
-class MessengerApi extends Base {
+class Messenger extends Base {
     async getChats(params) {
         const {data} = await this.http({
             domain: "chats",
@@ -22,4 +22,4 @@ class MessengerApi extends Base {
     }
 }
 
-module.exports = {MessengerApi}
+module.exports = {Messenger}
