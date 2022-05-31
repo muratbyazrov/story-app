@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, FlatList, StyleSheet, Text} from 'react-native';
+import {View, FlatList, StyleSheet} from 'react-native';
 import {ChatItem} from "../../components/ChatItem";
 import {useDispatch, useSelector} from 'react-redux';
 import {setChats} from "../../features/chats/chatsSlice";
