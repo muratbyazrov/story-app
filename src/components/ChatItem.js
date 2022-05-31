@@ -14,11 +14,13 @@ export const ChatItem = ({data: {navigation, data: {item}}}) => {
     } = item;
 
     return (
-        <Pressable style={styles.container}
-                   onPress={() => {
-                       navigation.navigate('Messages');
-                       return dispatch(setActiveChat(chatId));
-                   }}>
+        <Pressable
+            key={chatId}
+            style={styles.container}
+            onPress={() => {
+                navigation.navigate('Messages');
+                return dispatch(setActiveChat(chatId));
+            }}>
             <Image style={styles.image} source={{uri: senderPhotoUrl}}/>
             <View style={styles.nameAndMessage}>
                 <Text style={styles.name}>{`${senderName}, ${senderAge}`}</Text>
