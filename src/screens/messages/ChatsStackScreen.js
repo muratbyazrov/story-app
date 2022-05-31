@@ -4,7 +4,7 @@ import {MessagesScreen} from "./MessagesScreen";
 import {ChatsScreen} from "./ChatsScreen";
 // store
 import {useDispatch} from "react-redux";
-import {setChats} from "../../features/chats/chatsSlice";
+import {setChats} from "../../features/messages/messagesSlice";
 import {servers} from "../../servers";
 
 const ChatsStack = createNativeStackNavigator();

@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import chatsSlice from '../features/chats/chatsSlice.js';
+import messagesSlice from '../features/messages/messagesSlice.js';
 import userSlice from "../features/user/userSlice.js";
 
 export default configureStore({
     reducer: {
-        chats: chatsSlice,
+        chats: messagesSlice,
         user: userSlice,
     }
 })
