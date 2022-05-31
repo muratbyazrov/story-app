@@ -5,9 +5,8 @@ import {MessageItem} from "../../components/MessageItem";
 import {MessageInput} from "../../components/MessageInput";
 
 export const MessagesScreen = () => {
-    const renderItem = (data) => <MessageItem data={data}/>
     const messages = useSelector(state => state.chats.activeChat.messages);
-
+    const renderItem = (data) => <MessageItem data={data}/>
     return <View style={styles.center}>
         <FlatList
             style={styles.flatList}

@@ -2,9 +2,9 @@ import React from 'react';
 import {Pressable, Image, Text, StyleSheet, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {setActiveChat} from '../features/chats/chatsSlice.js'
+import {servers} from "../servers";
 
 export const ChatItem = ({data: {navigation, data: {item}}}) => {
-    const dispatch = useDispatch();
     const {
         chatId,
         senderAge,
@@ -13,13 +13,23 @@ export const ChatItem = ({data: {navigation, data: {item}}}) => {
         messages
     } = item;
 
+    const dispatch = useDispatch();
+    const setActiveChatMessages = async () => {
+        try {
+            const chatMessagesBatch = await servers.messenger.getMessages({limit: 1000, chatId});
+            dispatch(setActiveChat({chatId, chatMessagesBatch}));
+        } catch (error) {
+            console.log('ChatItem | setActiveChatMessages: ', error)
+        }
+    }
+
     return (
         <Pressable
             key={chatId}
             style={styles.container}
             onPress={() => {
                 navigation.navigate('Messages');
-                return dispatch(setActiveChat(chatId));
+                return setActiveChatMessages();
             }}>
             <Image style={styles.image} source={{uri: senderPhotoUrl}}/>
             <View style={styles.nameAndMessage}>
