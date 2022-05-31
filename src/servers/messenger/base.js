@@ -64,7 +64,7 @@ class Base {
 
             return response.json();
         } catch (error) {
-            console.error(error);
+            console.error('SYSTEM ERROR', error);
         }
     }
 }
