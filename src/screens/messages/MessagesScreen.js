@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, StyleSheet, FlatList} from 'react-native';
 import {useSelector} from 'react-redux';
-import {MessageItem} from "../../components/MessageItem";
-import {MessageInput} from "../../components/MessageInput";
+import {MessageItem} from "./components/MessageItem";
+import {MessageInput} from "./components/MessageInput";
 
 export const MessagesScreen = () => {
     const messages = useSelector(state => state.chats.activeChat.messages);

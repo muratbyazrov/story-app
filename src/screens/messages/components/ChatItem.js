@@ -1,8 +1,8 @@
 import React from 'react';
 import {Pressable, Image, Text, StyleSheet, View} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {setActiveChat} from '../features/chats/chatsSlice.js'
-import {servers} from "../servers";
+import {setActiveChat} from '../../../features/chats/chatsSlice.js'
+import {servers} from "../../../servers";
 
 export const ChatItem = ({data: {navigation, data: {item}}}) => {
     const {
