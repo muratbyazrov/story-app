@@ -23,13 +23,13 @@ class Messenger extends Base {
     }
 
     async getChats() {
-        const chats = await servers.messenger._getChats({
+        const chats = await this._getChats({
             limit: 100,
             userId: '5',
         });
 
         for (const chat of chats) {
-            chat.messages = await servers.messenger.getMessages({
+            chat.messages = await this.getMessages({
                 limit: 1,
                 chatId: chat.chatId
             })
