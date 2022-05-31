@@ -13,7 +13,7 @@ export const MessagesScreen = () => {
             style={styles.flatList}
             data={messages}
             renderItem={renderItem}
-            keyExtractor={item => item.id}>
+            keyExtractor={({messageId}) => messageId}>
         </FlatList>
         <MessageInput />
     </View>

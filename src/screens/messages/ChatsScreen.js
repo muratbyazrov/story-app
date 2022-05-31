@@ -12,7 +12,7 @@ export const ChatsScreen = ({navigation}) => {
                 style={styles.flatList}
                 data={chats}
                 renderItem={renderItem}
-                keyExtractor={item => item.id}/>
+                keyExtractor={({chatId}) => chatId}/>
         </View>
     )
 }
