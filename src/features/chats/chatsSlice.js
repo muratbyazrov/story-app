@@ -23,6 +23,8 @@ export const chatsSlice = createSlice({
                     chatId: chat.chatId
                 })
             }
+
+            chats && (state.list = chats);
         },
         removeChat: (state, action) => {
             state.list = state.list.filter(({chatId}) => chatId !== action.payload);
