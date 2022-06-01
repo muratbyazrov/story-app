@@ -1,5 +1,6 @@
 const {Base} = require("./base");
-const {servers} = require("../index");
+import store from '../../store/store.js';
+import {addMessages} from "../../features/messages/messagesSlice.js";
 
 class Messenger extends Base {
     async _getChats(params) {
@@ -36,6 +37,10 @@ class Messenger extends Base {
         }
 
         return chats;
+    }
+
+    gotMessage({data}) {
+        store.dispatch(addMessages(data))
     }
 }
 

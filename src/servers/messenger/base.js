@@ -1,8 +1,6 @@
-const {
-    messengerApiConfig: {
-        ws: {host, port}, http: {host: httpHost, port: httpPort, path}
-    }
-} = require('../config.js');
+const {messengerConfig: {ws, http}} = require('../config.js');
+const {host: httpHost, port: httpPort, path} = http;
+const {host, port} = ws;
 
 class Base {
     constructor() {
@@ -30,7 +28,12 @@ class Base {
     wsGate(data) {
         if (data.sessionId) {
             this.wsAuth(data.sessionId);
+        } else if(data.domain === 'messages') {
+            this.gotMessage(data)
         }
+    }
+
+    gotMessage(data) {
     }
 
     wsAuth(sessionId) {
@@ -39,7 +42,7 @@ class Base {
             event: "createUser",
             params: {
                 wsSessionId: sessionId,
-                userId: "5",
+                userId: "1",
                 firstName: 'Murat',
                 age: 28,
                 photoUrl: 'https://sun9-26.userapi.com/s/v1/if1/MI4EL-KWavrMGs9C_f8R_6CCSrFt--ftOpAnORW1fbLKWrXZQ4N4WeVeyeBhbvJGjrdDTWJr.jpg?size=2560x1706&quality=96&type=album'

@@ -1,5 +1,5 @@
 module.exports = {
-    messengerApiConfig: {
+    messengerConfig: {
         http: {
             host: 'http://192.168.1.71',
             port: 3000,
