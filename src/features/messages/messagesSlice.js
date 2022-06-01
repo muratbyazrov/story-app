@@ -19,7 +19,7 @@ export const messagesSlice = createSlice({
         },
         setActiveChat: (state, action) => {
             const activeChat = state.list.find(({chatId}) => chatId === action.payload.chatId);
-            activeChat.messages = action.payload.chatMessagesBatch;
+            activeChat.messages = action.payload.messages;
             state.activeChat = activeChat;
         }
     }

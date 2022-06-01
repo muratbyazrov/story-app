@@ -14,7 +14,7 @@ export const ChatsScreen = ({navigation}) => {
         )
     }
 
-    const renderItem = (data) => <ChatItem data={{navigation, data}}/>;
+    const renderItem = (chats) => <ChatItem data={{navigation, chats}}/>;
     return (
         <View style={styles.container}>
             <FlatList

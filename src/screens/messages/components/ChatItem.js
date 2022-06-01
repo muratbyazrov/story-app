@@ -4,22 +4,20 @@ import {useDispatch} from 'react-redux';
 import {setActiveChat} from '../../../features/messages/messagesSlice.js'
 import {servers} from "../../../servers";
 
-export const ChatItem = ({data: {navigation, data: {item}}}) => {
-    const {
-        chatId,
-        senderAge,
-        senderName,
-        senderPhotoUrl,
-        messages
-    } = item;
+export const ChatItem = ({data: {navigation, chats}}) => {
+    const {item: {chatId, senderAge, senderName, senderPhotoUrl, messages}} = chats;
+    const lastMessage = messages[0];
 
     const dispatch = useDispatch();
-    const setActiveChatMessages = async () => {
+    const setMessages = async () => {
         try {
-            const chatMessagesBatch = await servers.messenger.getMessages({limit: 1000, chatId});
-            dispatch(setActiveChat({chatId, chatMessagesBatch}));
+            const messages = await servers.messenger.getMessages({
+                limit: 1000,
+                chatId
+            });
+            dispatch(setActiveChat({chatId, messages}));
         } catch (error) {
-            console.log('ChatItem | setActiveChatMessages: ', error)
+            console.log('ChatItem | setMessages: ', error)
         }
     }
 
@@ -29,14 +27,17 @@ export const ChatItem = ({data: {navigation, data: {item}}}) => {
             style={styles.container}
             onPress={() => {
                 navigation.navigate('Messages');
-                return setActiveChatMessages();
+                return setMessages();
             }}>
+
             <Image style={styles.image} source={{uri: senderPhotoUrl}}/>
+
             <View style={styles.nameAndMessage}>
                 <Text style={styles.name}>{`${senderName}, ${senderAge}`}</Text>
-                <Text style={styles.message}>{messages.length ? messages[0].messageText : 'Сообщений нет'}</Text>
+                <Text style={styles.message}>{lastMessage ? lastMessage.messageText : 'Сообщений нет'}</Text>
             </View>
-            <Text style={styles.createDttm}>{messages.length ? messages[0].createDttm : ''}</Text>
+
+            <Text style={styles.createDttm}>{lastMessage ? lastMessage.createDttm : ''}</Text>
         </Pressable>
     )
 }
