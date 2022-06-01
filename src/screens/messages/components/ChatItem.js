@@ -6,7 +6,7 @@ import {servers} from "../../../servers";
 
 export const ChatItem = ({data: {navigation, chats}}) => {
     const {item: {chatId, senderAge, senderName, senderPhotoUrl, messages}} = chats;
-    const lastMessage = messages[0];
+    const lastMessage = messages[messages.length - 1];
 
     const dispatch = useDispatch();
     const setMessages = async () => {

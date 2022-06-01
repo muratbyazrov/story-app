@@ -5,7 +5,7 @@ import {MessageItem} from "./components/MessageItem";
 import {MessageInput} from "./components/MessageInput";
 
 export const MessagesScreen = () => {
-    const messages = useSelector(state => state.chats.list.find(({chatId}) => chatId === state.chats.activeChat.chatId).messages);
+    const messages = useSelector(state => state.chats.list.find(({chatId}) => chatId === state.chats.activeChat.chatId)?.messages);
     const renderItem = (data) => <MessageItem data={data}/>
     return <View style={styles.center}>
         <FlatList
