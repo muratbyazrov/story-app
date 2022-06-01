@@ -25,7 +25,7 @@ class Messenger extends Base {
     async getChats() {
         const chats = await this._getChats({
             limit: 100,
-            userId: '5',
+            userId: '1',
         });
 
         for (const chat of chats) {

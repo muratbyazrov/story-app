@@ -10,7 +10,7 @@ export const messagesSlice = createSlice({
         addChats: (state, action) => {
         },
         setChats: (state, action) => {
-            state.list = [...action.payload];
+            state.list = action.payload;
         },
         removeChat: (state, action) => {
             state.list = state.list.filter(({chatId}) => chatId !== action.payload);
