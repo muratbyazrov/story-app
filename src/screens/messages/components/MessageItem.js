@@ -6,7 +6,7 @@ export const MessageItem = ({data: {item: {createDttm, isRead, messageText, send
     const userId = useSelector(state => state.user.userId);
 
     return (
-        <Pressable style={userId === senderId ? styles.cameMessage : styles.myMessage}>
+        <Pressable style={userId === senderId ? styles.myMessage : styles.cameMessage}>
             <Text style={styles.messageText}>{messageText}</Text>
             <Text style={styles.createDttm}>{createDttm}</Text>
         </Pressable>

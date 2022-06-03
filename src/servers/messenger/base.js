@@ -10,44 +10,45 @@ class Base {
 
     wsConnector() {
         this.wsServer = new WebSocket(`${host}:${port}`);
-        this.wsServer.onmessage = (event) => {
+        this.wsServer.onmessage = event => {
             const data = JSON.parse(event.data);
             console.info(`SYSTEM [INFO]: Got WS message:`, data);
             this.wsGate(data);
         };
 
-        this.wsServer.onerror = (e) => {
-            console.log(e.message);
+        this.wsServer.onerror = err => {
+            console.log(err.message);
         };
 
-        this.wsServer.onclose = (e) => {
-            console.log(e);
+        this.wsServer.onclose = err => {
+            console.log(err);
         };
     }
 
     wsGate(data) {
         if (data.sessionId) {
             this.wsAuth(data.sessionId);
-        } else if(data.domain === 'messages') {
-            this.gotMessage(data)
+        } else if (data.domain === 'messages') {
+            this.gotMessage(data);
         }
     }
 
+    // eslint-disable-next-line no-empty-function
     gotMessage(data) {
     }
 
     wsAuth(sessionId) {
         this.ws({
-            domain: "users",
-            event: "createUser",
+            domain: 'users',
+            event: 'createUser',
             params: {
                 wsSessionId: sessionId,
-                userId: "1",
+                userId: '1',
                 firstName: 'Murat',
                 age: 28,
-                photoUrl: 'https://sun9-26.userapi.com/s/v1/if1/MI4EL-KWavrMGs9C_f8R_6CCSrFt--ftOpAnORW1fbLKWrXZQ4N4WeVeyeBhbvJGjrdDTWJr.jpg?size=2560x1706&quality=96&type=album'
-            }
-        })
+                photoUrl: 'https://sun9-26.userapi.com/s/v1/if1/MI4EL-KWavrMGs9C_f8R_6CCSrFt--ftOpAnORW1fbLKWrXZQ4N4WeVeyeBhbvJGjrdDTWJr.jpg?size=2560x1706&quality=96&type=album',
+            },
+        });
     }
 
     ws(data) {
@@ -59,10 +60,10 @@ class Base {
             const response = await fetch(`${httpHost}:${httpPort}/${path}`, {
                 method: 'POST',
                 headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(data),
             });
 
             return response.json();
@@ -72,4 +73,4 @@ class Base {
     }
 }
 
-module.exports = {Base}
+module.exports = {Base};

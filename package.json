@@ -31,7 +31,9 @@
     "ws": "^8.6.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "eslint": "^8.13.0",
+    "eslint-config-google": "^0.14.0"
   },
   "private": true
 }

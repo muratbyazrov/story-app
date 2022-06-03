@@ -39,8 +39,17 @@ class Messenger extends Base {
         return chats;
     }
 
+    async sendMessage(params){
+        const message = await this.http({
+            domain: "messages",
+            event: "createMessage",
+            params,
+        });
+        store.dispatch(addMessages(message.data));
+    }
+
     gotMessage({data}) {
-        store.dispatch(addMessages(data))
+        store.dispatch(addMessages(data));
     }
 }
 
