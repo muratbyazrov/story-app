@@ -3,14 +3,14 @@ import {createSlice} from '@reduxjs/toolkit';
 export const userSlice = createSlice({
     name: 'user',
     initialState: {
-        userId: '1',
+        userData: {}
     },
     reducers: {
         updateUser: state => {
         },
         setAccountData: (state, action) => {
-            state = action.payload;
-            console.log(state)
+            state.userData = action.payload;
+            console.log(5555555555, state.userData);
         }
     }
 });

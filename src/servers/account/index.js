@@ -1,13 +1,8 @@
+import store from '../../store/store.js';
+import {setAccountData} from "../../store/features/user/userSlice.js";
 const {Base} = require('./base');
-const store = require('../../store/store');
-const {setAccountData} = require('../../store/features/user/userSlice.js');
 
 class Account extends Base {
-    constructor() {
-        super();
-        this._setAccountData();
-    }
-
     async getAccount(params) {
         const {data} = await this.http({
             domain: 'accounts',
@@ -17,13 +12,16 @@ class Account extends Base {
         return data;
     }
 
-    async _setAccountData() {
-        const account = await this.getAccount({
-            limit: 1,
-            login: 'murat',
-            password: 'byazrov',
-        });
-        store.dispatch(setAccountData(account));
+    async signIn(params) {
+        try {
+            const account = await this.getAccount({
+                limit: 1,
+                ...params,
+            });
+            account && account.length && store.dispatch(setAccountData(account[0]));
+        } catch (err) {
+            console.info(`SYSTEM [ERROR]:`, err);
+        }
     }
 }
 

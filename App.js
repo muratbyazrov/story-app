@@ -1,25 +1,27 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {ChatsStackScreen, ProfileScreen} from './src/screens'
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import store from './src/store/store.js';
 import {Provider} from 'react-redux';
 import {StyleSheet} from "react-native";
+import {LoggedApp} from "./src/screens/LoggedApp/LoggedApp";
+import {AuthorizationStackScreen} from "./src/screens/login/AuthorizationStackScreen";
 
-const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 function App() {
+    const isLogin = () => {
+        return !!store.getState().user.userData.userId
+    }
+
+
     return (
         <Provider store={store}>
             <NavigationContainer>
-                <Tab.Navigator
-                    initialRouteName='Chats'
-                    barStyle={styles.bottomBar}>
-                    <Stack.Screen name="Chats" component={ChatsStackScreen}/>
-                    <Stack.Screen name="Profile" component={ProfileScreen}/>
-                </Tab.Navigator>
+                <Stack.Navigator>
+                    <Stack.Screen name="Logged" component={LoggedApp}/>
+                    <Stack.Screen name="Authorization" component={AuthorizationStackScreen}/>
+                </Stack.Navigator>
             </NavigationContainer>
         </Provider>
     );

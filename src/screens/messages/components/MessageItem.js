@@ -3,7 +3,7 @@ import {Pressable, Text, StyleSheet, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
 export const MessageItem = ({data: {item: {createDttm, isRead, messageText, senderId, messageId}}}) => {
-    const userId = useSelector(state => state.user.userId);
+    const userId = useSelector(state => state.user.userData.userId);
 
     return (
         <Pressable style={userId === senderId ? styles.myMessage : styles.cameMessage}>

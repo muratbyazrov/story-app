@@ -1,5 +1,5 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from "react";
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {MessagesScreen} from "./MessagesScreen";
 import {ChatsScreen} from "./ChatsScreen";
 // store
