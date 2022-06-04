@@ -7,9 +7,13 @@ export const userSlice = createSlice({
     },
     reducers: {
         updateUser: state => {
+        },
+        setAccountData: (state, action) => {
+            state = action.payload;
+            console.log(state)
         }
     }
 });
 
-export const {updateUser} = userSlice.actions;
+export const {updateUser, setAccountData} = userSlice.actions;
 export default userSlice.reducer;
