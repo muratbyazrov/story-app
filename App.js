@@ -19,8 +19,8 @@ function App() {
         <Provider store={store}>
             <NavigationContainer>
                 <Stack.Navigator>
-                    <Stack.Screen name="Logged" component={LoggedApp}/>
                     <Stack.Screen name="Authorization" component={AuthorizationStackScreen}/>
+                    <Stack.Screen name="Logged" component={LoggedApp}/>
                 </Stack.Navigator>
             </NavigationContainer>
         </Provider>

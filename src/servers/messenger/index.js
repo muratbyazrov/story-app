@@ -1,20 +1,15 @@
-const {Base} = require("./base");
+const {Base} = require("../base");
 import store from '../../store/store.js';
 import {addMessages} from "../../store/features/messages/messagesSlice.js";
+import {messengerConfig} from "../config.js";
 
 class Messenger extends Base {
-    async _getChats(params) {
-        const {data} = await this.http({
-            domain: "chats",
-            event: "getChats",
-            params,
-        })
-
-        return data;
+    constructor() {
+        super(messengerConfig);
     }
 
     async getMessages(params) {
-        const {data} = await this.http({
+        const {data} = await this.httpAdapter({
             domain: "messages",
             event: "getMessages",
             params,
@@ -24,10 +19,14 @@ class Messenger extends Base {
     }
 
     async getChats() {
-        const chats = await this._getChats({
-            limit: 100,
-            userId: '1',
-        });
+        const chats = await this.httpAdapter({
+            domain: "chats",
+            event: "getChats",
+            params: {
+                limit: 100,
+                userId: '1',
+            },
+        })
 
         for (const chat of chats) {
             chat.messages = await this.getMessages({
@@ -40,7 +39,7 @@ class Messenger extends Base {
     }
 
     async sendMessage(params){
-        const message = await this.http({
+        const message = await this.httpAdapter({
             domain: "messages",
             event: "createMessage",
             params,
@@ -48,7 +47,7 @@ class Messenger extends Base {
         store.dispatch(addMessages(message.data));
     }
 
-    gotMessage({data}) {
+    gotMessengerMessage({data}) {
         store.dispatch(addMessages(data));
     }
 }

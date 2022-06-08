@@ -23,7 +23,6 @@ export const ChatItem = ({data: {navigation, chats}}) => {
 
     return (
         <Pressable
-            key={chatId}
             style={styles.container}
             onPress={() => {
                 navigation.navigate('Messages');

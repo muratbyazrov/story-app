@@ -6,6 +6,9 @@ import {MessageInput} from "./components/MessageInput";
 
 export const MessagesScreen = () => {
     const messages = useSelector(state => state.chats.list.find(({chatId}) => chatId === state.chats.activeChat.chatId)?.messages);
+    console.log(111111111, messages)
+    console.log(messages.map(({messageId}) => messageId));
+
     const renderItem = (data) => <MessageItem data={data}/>
     const flatListRef = useRef();
 

@@ -17,6 +17,7 @@ export const LoginScreen = ({navigation}) => {
             <Text style={styles.text}>Логин и пароль</Text>
             <SafeAreaView SafeAreaView style={styles.safeAreaView}>
                 <TextInput
+                    value={'Murat'}
                     autoFocus={true}
                     style={styles.input}
                     onChangeText={onChangeLogin}
@@ -24,6 +25,7 @@ export const LoginScreen = ({navigation}) => {
                 />
 
                 <TextInput
+                    value={'Byazrov'}
                     autoFocus={true}
                     style={styles.input}
                     onChangeText={onChangePassword}

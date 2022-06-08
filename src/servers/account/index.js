@@ -1,8 +1,13 @@
 import store from '../../store/store.js';
 import {setAccountData} from "../../store/features/user/userSlice.js";
-const {Base} = require('./base');
+const {Base} = require('../base');
+import {accountConfig} from "../config.js";
 
 class Account extends Base {
+    constructor() {
+        super(accountConfig);
+    }
+
     async getAccount(params) {
         const {data} = await this.http({
             domain: 'accounts',

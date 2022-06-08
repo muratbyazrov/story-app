@@ -10,7 +10,6 @@ export const userSlice = createSlice({
         },
         setAccountData: (state, action) => {
             state.userData = action.payload;
-            console.log(5555555555, state.userData);
         }
     }
 });

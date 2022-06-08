@@ -11,9 +11,9 @@ const Stack = createNativeStackNavigator();
 export const LoggedApp = ({navigation}) => {
     return (
         <Tab.Navigator
-            initialRouteName='Chats'
+            initialRouteName='ChatsStack'
             barStyle={styles.bottomBar}>
-            <Stack.Screen name="Chats" component={ChatsStackScreen}/>
+            <Stack.Screen name="ChatsStack" component={ChatsStackScreen}/>
             <Stack.Screen name="Profile" component={ProfileScreen}/>
         </Tab.Navigator>
     )
