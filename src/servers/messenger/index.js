@@ -47,7 +47,7 @@ class Messenger extends Base {
         store.dispatch(addMessages(message.data));
     }
 
-    gotMessengerMessage({data}) {
+    gotWsMessage({data}) {
         store.dispatch(addMessages(data));
     }
 }

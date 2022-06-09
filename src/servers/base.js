@@ -14,48 +14,18 @@ class Base {
         this.wsServer.onmessage = event => {
             const data = JSON.parse(event.data);
             console.info(`SYSTEM [INFO]: Got WS message:`, data);
-            data.sessionId && this.wsAuth(data.sessionId);
             this.wsGate(data);
         };
 
         this.wsServer.onerror = err => {
             console.info(`SYSTEM [ERROR]: Error in wsAdapter:`, err.message);
-            setTimeout(() => this.wsAdapter(), 1000);
+            setTimeout(() => this.wsAdapter(), 3000);
         };
 
         this.wsServer.onclose = err => {
             console.info(`SYSTEM [ERROR]: ws connection close with error:`, err.message);
-            setTimeout(() => this.wsAdapter(), 1000);
+            setTimeout(() => this.wsAdapter(), 3000);
         };
-    }
-
-    wsGate(data) {
-        const {sessionId, domain} = data;
-        sessionId && this.wsAuth(sessionId);
-
-        if (domain === 'messages') {
-            this.gotMessengerMessage(data);
-        }
-    }
-
-    // eslint-disable-next-line no-empty-function
-    gotMessengerMessage(data) {
-    }
-
-    async wsAuth(sessionId) {
-        const userData = store.getState().user.userData
-        const {userId, firstName, age, photoUrl} = userData;
-        try {
-            await this.httpAdapter({
-                domain: 'users',
-                event: 'createUser',
-                params: {wsSessionId: sessionId, userId, firstName, age, photoUrl},
-            });
-        } catch (err) {
-            console.info(`SYSTEM [ERROR]: ws auth is failed:`, err.message);
-            console.info(`SYSTEM [INFO]: retry ws auth...`);
-            this.wsAdapter();
-        }
     }
 
     async httpAdapter(data) {
@@ -75,6 +45,33 @@ class Base {
         } catch (error) {
             console.error('SYSTEM ERROR', error);
         }
+    }
+
+    wsGate(data) {
+        const {sessionId} = data;
+        sessionId && this.wsAuth(sessionId);
+        this.gotWsMessage(data);
+    }
+
+    // just for messenger. In future rebase to index.js by messenger
+    async wsAuth(sessionId) {
+        const userData = store.getState().user.userData
+        const {userId, firstName, age, photoUrl} = userData;
+        try {
+            await this.httpAdapter({
+                domain: 'users',
+                event: 'createUser',
+                params: {wsSessionId: sessionId, userId, firstName, age, photoUrl},
+            });
+        } catch (err) {
+            console.info(`SYSTEM [ERROR]: ws auth is failed:`, err.message);
+            console.info(`SYSTEM [INFO]: retry ws auth...`);
+            this.wsAdapter();
+        }
+    }
+
+    // eslint-disable-next-line no-empty-function
+    gotWsMessage(data) {
     }
 }
 

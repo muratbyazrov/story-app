@@ -1,13 +1,13 @@
-const {Messenger} = require("./messenger");
-const {Account} = require("./account");
-const {Photo} = require("./photo");
+const {Messenger} = require('./messenger');
+const {Account} = require('./account');
+const {Photo} = require('./photo');
 
 class Servers {
     constructor() {
-        this.messenger = new Messenger();
         this.account = new Account();
+        this.messenger = new Messenger();
         this.photo = new Photo();
     }
 }
 
-module.exports = {servers: new Servers()}
+module.exports = {servers: new Servers()};
