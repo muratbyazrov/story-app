@@ -11,7 +11,7 @@ class Account extends Base {
     async getAccount(params) {
         const {data} = await this.http({
             domain: 'accounts',
-            event: 'getUsers',
+            event: 'getAccounts',
             params,
         });
         return data;

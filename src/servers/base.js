@@ -53,20 +53,18 @@ class Base {
         this.gotWsMessage(data);
     }
 
-    // just for messenger. In future rebase to index.js by messenger
     async wsAuth(sessionId) {
         const userData = store.getState().user.userData
-        const {userId, firstName, age, photoUrl} = userData;
+        const {userId, login, password} = userData;
         try {
             await this.httpAdapter({
-                domain: 'users',
-                event: 'createUser',
-                params: {wsSessionId: sessionId, userId, firstName, age, photoUrl},
+                domain: 'accounts',
+                event: 'modifyAccount',
+                params: {wsSessionId: sessionId, userId, login, password},
             });
         } catch (err) {
             console.info(`SYSTEM [ERROR]: ws auth is failed:`, err.message);
             console.info(`SYSTEM [INFO]: retry ws auth...`);
-            this.wsAdapter();
         }
     }
 
