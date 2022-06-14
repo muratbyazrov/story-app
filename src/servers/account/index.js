@@ -1,5 +1,5 @@
 import store from '../../store/store.js';
-import {setAccountData} from "../../store/features/user/userSlice.js";
+import {setAccountData} from "../../store/features/account/accountSlice.js";
 const {Base} = require('../base');
 import {accountConfig} from "../config.js";
 

@@ -53,13 +53,13 @@ class Base {
     }
 
     async wsAuth(sessionId) {
-        const userData = store.getState().user.userData
-        const {userId, login, password} = userData;
+        const accountData = store.getState().account.accountData
+        const {accountId, login, password} = accountData;
         try {
             await this.httpAdapter({
                 domain: 'accounts',
-                event: 'modifyAccount',
-                params: {wsSessionId: sessionId, userId, login, password},
+                event: 'createAccount',
+                params: {wsSessionId: sessionId, accountId, login, password},
             });
         } catch (err) {
             console.info(`SYSTEM [ERROR]: ws auth is failed:`, err.message);

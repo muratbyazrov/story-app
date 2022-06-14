@@ -24,7 +24,7 @@ class Messenger extends Base {
             event: "getChats",
             params: {
                 limit: 100,
-                userId: '1',
+                accountId: '1',
             },
         })
 

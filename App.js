@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator();
 
 function App() {
     const isLogin = () => {
-        return !!store.getState().user.userData.userId
+        return !!store.getState().account.accountData.accountId
     }
 
 

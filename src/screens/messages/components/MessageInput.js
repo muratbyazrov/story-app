@@ -7,7 +7,7 @@ import {useRef} from 'react';
 
 export const MessageInput = () => {
     const chatId = useSelector(state => state.chats.activeChat.chatId);
-    const senderId = useSelector(state => state.user.userData.userId);
+    const senderId = useSelector(state => state.account.accountData.accountId);
     const [messageText, onChangeText] = React.useState(null);
     const textInputRef = useRef();
 
