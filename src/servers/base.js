@@ -49,7 +49,8 @@ class Base {
 
     wsGate(data) {
         const {sessionId} = data;
-        sessionId && this.wsAuth(sessionId);
+        this.wsConfig.isActive && sessionId && this.wsAuth(sessionId);
+
         this.gotWsMessage(data);
     }
 

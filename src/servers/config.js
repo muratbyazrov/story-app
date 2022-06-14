@@ -6,6 +6,7 @@ module.exports = {
             path: 'story-messenger-api/v1',
         },
         ws: {
+            isActive: true,
             host: 'ws://192.168.1.71',
             port: 9000,
         },
@@ -18,6 +19,7 @@ module.exports = {
             path: 'story-account-api/v1',
         },
         ws: {
+            isActive: false,
             host: 'ws://192.168.1.71',
             port: 9001,
         },
