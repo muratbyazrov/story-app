@@ -4,7 +4,7 @@ class Base {
     constructor(config) {
         this.httpConfig = config.http;
         this.wsConfig = config.ws;
-        this.wsAdapter();
+        this.wsConfig.isActive && this.wsAdapter();
     }
 
     wsAdapter() {
@@ -19,7 +19,6 @@ class Base {
 
         this.wsServer.onerror = err => {
             console.info(`SYSTEM [ERROR]: Error in wsAdapter:`, err.message);
-            setTimeout(() => this.wsAdapter(), 3000);
         };
 
         this.wsServer.onclose = err => {
@@ -49,8 +48,7 @@ class Base {
 
     wsGate(data) {
         const {sessionId} = data;
-        this.wsConfig.isActive && sessionId && this.wsAuth(sessionId);
-
+        sessionId && this.wsAuth(sessionId);
         this.gotWsMessage(data);
     }
 
@@ -66,6 +64,7 @@ class Base {
         } catch (err) {
             console.info(`SYSTEM [ERROR]: ws auth is failed:`, err.message);
             console.info(`SYSTEM [INFO]: retry ws auth...`);
+            setTimeout(() => this.wsAdapter(), 3000);
         }
     }
 
