@@ -5,6 +5,7 @@ class Base {
         this.httpConfig = config.http;
         this.wsConfig = config.ws;
         this.wsConfig.isActive && this.wsAdapter();
+        this.wsSessionId = null;
     }
 
     wsAdapter() {
@@ -48,18 +49,26 @@ class Base {
 
     wsGate(data) {
         const {sessionId} = data;
-        sessionId && this.wsAuth(sessionId);
+        sessionId && (this.wsSessionId = sessionId);
         this.gotWsMessage(data);
     }
 
-    async wsAuth(sessionId) {
+    async wsAuth() {
         const accountData = store.getState().account.accountData
-        const {accountId, login, password} = accountData;
+        const {accountId, login, password, firstName, age, photoUrl} = accountData;
         try {
             await this.httpAdapter({
                 domain: 'accounts',
                 event: 'createAccount',
-                params: {wsSessionId: sessionId, accountId, login, password},
+                params: {
+                    accountId,
+                    login,
+                    password,
+                    wsSessionId: this.wsSessionId,
+                    firstName,
+                    age,
+                    photoUrl,
+                },
             });
         } catch (err) {
             console.info(`SYSTEM [ERROR]: ws auth is failed:`, err.message);

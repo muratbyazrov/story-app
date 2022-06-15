@@ -9,7 +9,7 @@ class Account extends Base {
     }
 
     async getAccount(params) {
-        const {data} = await this.http({
+        const {data} = await this.httpAdapter({
             domain: 'accounts',
             event: 'getAccounts',
             params,

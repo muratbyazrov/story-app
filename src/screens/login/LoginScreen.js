@@ -4,11 +4,12 @@ import Button from "./components/Button";
 import {servers} from "../../servers";
 
 export const LoginScreen = ({navigation}) => {
-    const [login, onChangeLogin] = React.useState(null);
-    const [password, onChangePassword] = React.useState(null);
+    const [login, onChangeLogin] = React.useState('Murat');
+    const [password, onChangePassword] = React.useState('Byazrov');
 
     const signIn = async () => {
         await servers.account.signIn({login, password});
+        await servers.messenger.wsAuth();
         navigation.navigate('Logged');
     }
 
@@ -17,7 +18,6 @@ export const LoginScreen = ({navigation}) => {
             <Text style={styles.text}>Логин и пароль</Text>
             <SafeAreaView SafeAreaView style={styles.safeAreaView}>
                 <TextInput
-                    value={'Murat'}
                     autoFocus={true}
                     style={styles.input}
                     onChangeText={onChangeLogin}
@@ -25,7 +25,6 @@ export const LoginScreen = ({navigation}) => {
                 />
 
                 <TextInput
-                    value={'Byazrov'}
                     autoFocus={true}
                     style={styles.input}
                     onChangeText={onChangePassword}
