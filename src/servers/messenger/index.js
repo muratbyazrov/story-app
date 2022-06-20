@@ -8,6 +8,20 @@ class Messenger extends Base {
         super(messengerConfig);
     }
 
+    async _getChats() {
+        const {accountId} = store.getState().account.accountData;
+        const {data} = await this.httpAdapter({
+            domain: "chats",
+            event: "getChats",
+            params: {
+                limit: 100,
+                accountId,
+            },
+        })
+
+        return data
+    }
+
     async getMessages(params) {
         const {data} = await this.httpAdapter({
             domain: "messages",
@@ -19,15 +33,7 @@ class Messenger extends Base {
     }
 
     async getChats() {
-        const chats = await this.httpAdapter({
-            domain: "chats",
-            event: "getChats",
-            params: {
-                limit: 100,
-                accountId: '1',
-            },
-        })
-
+        const chats = await this._getChats();
         for (const chat of chats) {
             chat.messages = await this.getMessages({
                 limit: 1,
@@ -38,7 +44,7 @@ class Messenger extends Base {
         return chats;
     }
 
-    async sendMessage(params){
+    async sendMessage(params) {
         const message = await this.httpAdapter({
             domain: "messages",
             event: "createMessage",

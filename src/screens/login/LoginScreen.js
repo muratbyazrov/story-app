@@ -4,8 +4,8 @@ import Button from "./components/Button";
 import {servers} from "../../servers";
 
 export const LoginScreen = ({navigation}) => {
-    const [login, onChangeLogin] = React.useState('Murat');
-    const [password, onChangePassword] = React.useState('Byazrov');
+    const [login, onChangeLogin] = React.useState(null);
+    const [password, onChangePassword] = React.useState(null);
 
     const signIn = async () => {
         await servers.account.signIn({login, password});

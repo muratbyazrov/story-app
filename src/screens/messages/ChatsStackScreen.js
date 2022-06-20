@@ -9,7 +9,6 @@ import {servers} from "../../servers";
 
 const ChatsStack = createNativeStackNavigator();
 export const ChatsStackScreen = ({navigation}) => {
-    // tab press handler (get and set chats in state)
     const dispatch = useDispatch();
     navigation.addListener('tabPress', () => {
         servers.messenger.getChats()
