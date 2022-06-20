@@ -4,8 +4,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import store from './src/store/store.js';
 import {Provider} from 'react-redux';
 import {StyleSheet} from "react-native";
-import {LoggedApp} from "./src/screens/LoggedApp/LoggedApp";
-import {AuthorizationStackScreen} from "./src/screens/login/AuthorizationStackScreen";
+import {Logged} from "./src/screens/logged/Logged";
+import {Login} from "./src/screens/login/Login";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,9 +18,14 @@ function App() {
     return (
         <Provider store={store}>
             <NavigationContainer>
-                <Stack.Navigator>
-                    <Stack.Screen name="Authorization" component={AuthorizationStackScreen}/>
-                    <Stack.Screen name="Logged" component={LoggedApp}/>
+                <Stack.Navigator
+                    initialRouteName={'Login'}
+                    screenOptions={{
+                        headerShown: false
+                    }}
+                >
+                    <Stack.Screen name="Login" component={Login}/>
+                    <Stack.Screen name="Logged" component={Logged}/>
                 </Stack.Navigator>
             </NavigationContainer>
         </Provider>

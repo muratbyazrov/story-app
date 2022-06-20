@@ -2,7 +2,7 @@ import React from 'react';
 import {TextInput, SafeAreaView, StyleSheet} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import {useSelector} from "react-redux";
-import {servers} from "../../../servers";
+import {servers} from "../../../../servers";
 import {useRef} from 'react';
 
 export const MessageInput = () => {

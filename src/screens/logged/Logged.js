@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {ChatsStackScreen} from "../messages/ChatsStackScreen";
-import {ProfileScreen} from "../profile/ProfileScreen";
+import {ChatsStackScreen} from "./messages/ChatsStackScreen";
+import {ProfileScreen} from "./profile/ProfileScreen";
 import {createMaterialBottomTabNavigator} from "@react-navigation/material-bottom-tabs";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {StyleSheet} from "react-native";
@@ -8,7 +8,7 @@ import {StyleSheet} from "react-native";
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-export const LoggedApp = ({navigation}) => {
+export const Logged = ({navigation}) => {
     return (
         <Tab.Navigator
             initialRouteName='ChatsStack'

@@ -12,7 +12,7 @@ export const WelcomeScreen = ({navigation}) => {
                 Вы не увидите никаких раздражающих рекламных роликов
             </Text>
             <Button
-                onPress={() => navigation.navigate('Login')}
+                onPress={() => navigation.navigate('LoginScreen')}
                 title={'Войти'}
             />
 
