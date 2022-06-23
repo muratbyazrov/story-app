@@ -8,7 +8,7 @@ export const LoginScreen = ({navigation}) => {
     const [password, onChangePassword] = React.useState(null);
 
     const signIn = async () => {
-        await servers.account.signIn({login, password});
+        await servers.account.signIn({login: login.trim(), password: password.trim()});
         await servers.messenger.wsAuth();
         navigation.navigate('Logged');
     }

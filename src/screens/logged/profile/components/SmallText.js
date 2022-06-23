@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, StyleSheet, View} from 'react-native';
 
-export const SubtitleText = ({text}) => {
+export const SmallText = ({text}) => {
     return (
         <View>
             <Text style={styles.text}>{text}</Text>
@@ -12,6 +12,7 @@ export const SubtitleText = ({text}) => {
 
 const styles = StyleSheet.create({
     text: {
-        fontSize: 32,
+        color: 'black',
+        fontSize: 22,
     }
 });

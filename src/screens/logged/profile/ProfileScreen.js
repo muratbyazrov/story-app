@@ -1,25 +1,34 @@
 import React from 'react';
 import {View, SafeAreaView, StyleSheet, ScrollView, Image, StatusBar} from 'react-native';
+import {useSelector} from "react-redux";
+import {TitleText, SubtitleText, Button, SmallText} from './components'
+
 import {Dimensions} from 'react-native';
 
 const screen = Dimensions.get('window');
 
-import {useSelector} from "react-redux";
-import {TitleText} from "./components/TitleText";
-import {SubtitleText} from "./components/SubtitleText";
-import Button from "./components/Button";
-
-
 export const ProfileScreen = ({}) => {
-    const accountData = useSelector(state => state.account.accountData);
+    const {
+        firstName,
+        birthday,
+        photoUrl,
+        job,
+        education,
+        goal,
+        about,
+        height,
+        weight,
+    } = useSelector(state => state.account.accountData);
+
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView contentContainerStyle={styles.scrollView}>
-                <Image style={styles.image} source={{uri: accountData.photoUrl}}/>
+                <Image style={styles.image} source={{uri: photoUrl}}/>
                 <View style={styles.accountDataView}>
                     <View>
                         <TitleText text={'Основное'}/>
-                        <SubtitleText text={`${accountData.firstName}, ${accountData.age} лет`}/>
+                        <SubtitleText
+                            text={`${firstName}, ${new Date().getFullYear() - new Date(birthday).getFullYear()} лет`}/>
                     </View>
                     <Button/>
                 </View>
@@ -27,7 +36,7 @@ export const ProfileScreen = ({}) => {
                 <View style={styles.accountDataView}>
                     <View>
                         <TitleText text={'Работа'}/>
-                        <SubtitleText text={`${accountData.firstName}, ${accountData.age} лет`}/>
+                        <SubtitleText text={`${job || 'не указано'}`}/>
                     </View>
                     <Button/>
                 </View>
@@ -35,15 +44,40 @@ export const ProfileScreen = ({}) => {
                 <View style={styles.accountDataView}>
                     <View>
                         <TitleText text={'Образование'}/>
-                        <SubtitleText text={`${accountData.firstName}, ${accountData.age} лет`}/>
+                        <SubtitleText text={`${education || 'не указано'}`}/>
                     </View>
                     <Button/>
                 </View>
 
                 <View style={styles.accountDataView}>
                     <View>
-                        <TitleText text={'Образование'}/>
-                        <SubtitleText text={`${accountData.firstName}, ${accountData.age} лет`}/>
+                        <TitleText text={'Цель'}/>
+                        <SubtitleText text={`${goal || 'не указано'}`}/>
+                    </View>
+                    <Button/>
+                </View>
+
+                <View style={styles.accountDataView}>
+                    <View>
+                        <TitleText text={'Обо мне'}/>
+                        <SubtitleText text={`${about || 'не указано'}`}/>
+                    </View>
+                    <Button/>
+                </View>
+
+                <View style={styles.accountDataView}>
+                    <View>
+                        <TitleText text={'Личные данные'}/>
+                        <SmallText text={height ? `Рост: ${height} см` : 'Рост: не указано'}/>
+                        <SmallText text={weight ? `Вес: ${height} кг` : 'Вес: не указано'}/>
+                    </View>
+                    <Button/>
+                </View>
+
+                <View style={styles.accountDataView}>
+                    <View>
+                        <TitleText text={'Интересы'}/>
+                        <SubtitleText text={`${job || 'не указано'}`}/>
                     </View>
                     <Button/>
                 </View>
@@ -62,7 +96,7 @@ const styles = StyleSheet.create({
     },
     scrollView: {
         flexGrow: 1,
-        width: screen.width - 40,
+        width: screen.width - 30,
         backgroundColor: 'white',
         borderTopRightRadius: 30,
         borderTopLeftRadius: 30,
