@@ -10,20 +10,14 @@ import {Login} from "./src/screens/login/Login";
 const Stack = createNativeStackNavigator();
 
 function App() {
-    const isLogin = () => {
-        return !!store.getState().account.accountData.accountId
-    }
-
+    const initialRouteName = store.getState().account.accountData.accountId ? 'Logged' : 'Login1';
 
     return (
         <Provider store={store}>
             <NavigationContainer>
                 <Stack.Navigator
-                    initialRouteName={'Login'}
-                    screenOptions={{
-                        headerShown: false
-                    }}
-                >
+                    initialRouteName={initialRouteName}
+                    screenOptions={{headerShown: false}}>
                     <Stack.Screen name="Login" component={Login}/>
                     <Stack.Screen name="Logged" component={Logged}/>
                 </Stack.Navigator>
