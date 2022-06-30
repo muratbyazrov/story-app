@@ -1,24 +1,19 @@
 import React from 'react';
 import {View, SafeAreaView, StyleSheet, ScrollView, Image, StatusBar} from 'react-native';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {TitleText, SubtitleText, Button, SmallText} from './components'
 
 import {Dimensions} from 'react-native';
+import {MainForm} from "./components/MainForm";
+import {formSwitcher} from "../../../store/features/account/accountSlice";
 
 const screen = Dimensions.get('window');
 
-export const ProfileScreen = ({}) => {
-    const {
-        firstName,
-        birthday,
-        photoUrl,
-        job,
-        education,
-        goal,
-        about,
-        height,
-        weight,
-    } = useSelector(state => state.account.accountData);
+export const ProfileScreen = () => {
+    const dispatch = useDispatch();
+    const accountData = useSelector(state => state.account.accountData);
+    const forms = useSelector(state => state.account.formsActive);
+    const {firstName, birthday, photoUrl, job, education, goal, about, height, weight,} = accountData;
 
     return (
         <SafeAreaView style={styles.container}>
@@ -30,7 +25,7 @@ export const ProfileScreen = ({}) => {
                         <SubtitleText
                             text={`${firstName}, ${new Date().getFullYear() - new Date(birthday).getFullYear()} лет`}/>
                     </View>
-                    <Button/>
+                    <Button onPress={() => dispatch(formSwitcher('main'))}/>
                 </View>
 
                 <View style={styles.accountDataView}>
@@ -82,6 +77,8 @@ export const ProfileScreen = ({}) => {
                     <Button/>
                 </View>
             </ScrollView>
+
+            {forms.main && <MainForm data={accountData}/>}
         </SafeAreaView>
     )
 }
