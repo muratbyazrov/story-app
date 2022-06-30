@@ -11,7 +11,7 @@ export const accountSlice = createSlice({
             goal: false,
             about: false,
             personals: false,
-            interest: false,
+            interests: false,
         }
     },
     reducers: {

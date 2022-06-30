@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {TitleText, SubtitleText, Button, SmallText} from './components'
 
 import {Dimensions} from 'react-native';
-import {MainForm} from "./components/MainForm";
+import {About, Education, Goal, Interests, Job, Main, Personals} from "./components/forms";
 import {formSwitcher} from "../../../store/features/account/accountSlice";
 
 const screen = Dimensions.get('window');
@@ -13,7 +13,7 @@ export const ProfileScreen = () => {
     const dispatch = useDispatch();
     const accountData = useSelector(state => state.account.accountData);
     const forms = useSelector(state => state.account.formsActive);
-    const {firstName, birthday, photoUrl, job, education, goal, about, height, weight,} = accountData;
+    const {firstName, birthday, photoUrl, job, education, goal, about, height, weight, interests} = accountData;
 
     return (
         <SafeAreaView style={styles.container}>
@@ -33,7 +33,7 @@ export const ProfileScreen = () => {
                         <TitleText text={'Работа'}/>
                         <SubtitleText text={`${job || 'не указано'}`}/>
                     </View>
-                    <Button/>
+                    <Button onPress={() => dispatch(formSwitcher('job'))}/>
                 </View>
 
                 <View style={styles.accountDataView}>
@@ -41,7 +41,7 @@ export const ProfileScreen = () => {
                         <TitleText text={'Образование'}/>
                         <SubtitleText text={`${education || 'не указано'}`}/>
                     </View>
-                    <Button/>
+                    <Button onPress={() => dispatch(formSwitcher('education'))}/>
                 </View>
 
                 <View style={styles.accountDataView}>
@@ -49,7 +49,7 @@ export const ProfileScreen = () => {
                         <TitleText text={'Цель'}/>
                         <SubtitleText text={`${goal || 'не указано'}`}/>
                     </View>
-                    <Button/>
+                    <Button onPress={() => dispatch(formSwitcher('goal'))}/>
                 </View>
 
                 <View style={styles.accountDataView}>
@@ -57,7 +57,7 @@ export const ProfileScreen = () => {
                         <TitleText text={'Обо мне'}/>
                         <SubtitleText text={`${about || 'не указано'}`}/>
                     </View>
-                    <Button/>
+                    <Button onPress={() => dispatch(formSwitcher('about'))}/>
                 </View>
 
                 <View style={styles.accountDataView}>
@@ -66,19 +66,25 @@ export const ProfileScreen = () => {
                         <SmallText text={height ? `Рост: ${height} см` : 'Рост: не указано'}/>
                         <SmallText text={weight ? `Вес: ${height} кг` : 'Вес: не указано'}/>
                     </View>
-                    <Button/>
+                    <Button onPress={() => dispatch(formSwitcher('personals'))}/>
                 </View>
 
                 <View style={styles.accountDataView}>
                     <View>
                         <TitleText text={'Интересы'}/>
-                        <SubtitleText text={`${job || 'не указано'}`}/>
+                        <SubtitleText text={`${interests || 'не указано'}`}/>
                     </View>
-                    <Button/>
+                    <Button onPress={() => dispatch(formSwitcher('interests'))}/>
                 </View>
             </ScrollView>
 
-            {forms.main && <MainForm data={accountData}/>}
+            {forms.main && <Main data={accountData}/>}
+            {forms.education && <Education data={accountData}/>}
+            {forms.job && <Job data={accountData}/>}
+            {forms.interests && <Interests data={accountData}/>}
+            {forms.goal && <Goal data={accountData}/>}
+            {forms.about && <About data={accountData}/>}
+            {forms.personals && <Personals data={accountData}/>}
         </SafeAreaView>
     )
 }

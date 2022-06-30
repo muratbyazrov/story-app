@@ -1,11 +1,12 @@
 import React from 'react';
-import {StyleSheet, View, TextInput} from 'react-native';
+import {View, TextInput} from 'react-native';
 import FormButton from "./FormButton";
-import {TitleText} from "./TitleText";
-import {formSwitcher} from "../../../../store/features/account/accountSlice";
+import {TitleText} from "../TitleText";
+import {formSwitcher} from "../../../../../store/features/account/accountSlice";
 import {useDispatch} from "react-redux";
+import {styles} from "./forms-styles.js";
 
-export const MainForm = ({data}) => {
+export const Main = ({data}) => {
     const dispatch = useDispatch();
     const [firstName, onChangeFirstName] = React.useState(data.firstName || 'Не указано');
     const [birthday, onChangeBirthday] = React.useState(data.birthday || 'Не указано');
@@ -49,28 +50,3 @@ export const MainForm = ({data}) => {
         </View>
     )
 }
-
-
-const styles = StyleSheet.create({
-    form: {
-        position: "absolute",
-        width: '100%',
-        backgroundColor: 'white',
-        padding: 20,
-        borderTopLeftRadius: 30,
-        borderTopRightRadius: 30,
-        bottom: 0,
-    },
-    input: {
-        fontSize: 24,
-        color: 'black',
-        marginBottom: 15,
-        marginTop: 3
-    },
-    buttonContainer: {
-        flex: 1,
-        flexDirection: "row",
-        justifyContent: 'space-around',
-        marginTop: 20
-    }
-});
