@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, StyleSheet, View} from 'react-native';
 
-export const SubtitleText = ({text}) => {
+export const FormTitle = ({text}) => {
     return (
         <View>
             <Text style={styles.text}>{text}</Text>
@@ -12,6 +12,6 @@ export const SubtitleText = ({text}) => {
 
 const styles = StyleSheet.create({
     text: {
-        fontSize: 28,
+        fontSize: 20,
     }
 });

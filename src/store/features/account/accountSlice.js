@@ -15,16 +15,17 @@ export const accountSlice = createSlice({
         }
     },
     reducers: {
-        updateAccount: state => {
+        modifyAccount: (state, action) => {
+            state.accountData = {...state.accountData, ...action.payload};
         },
         setAccountData: (state, action) => {
-            state.accountData = action.payload;
+            state.accountData = {...state.accountData, ...action.payload};
         },
         formSwitcher: (state, action) => {
-            state.formsActive[action.payload] = !state.formsActive[action.payload]
+            state.formsActive[action.payload] = !state.formsActive[action.payload];
         }
     }
 });
 
-export const {updateAccount, setAccountData, formSwitcher} = accountSlice.actions;
+export const {modifyAccount, setAccountData, formSwitcher} = accountSlice.actions;
 export default accountSlice.reducer;

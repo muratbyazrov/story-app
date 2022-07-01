@@ -16,7 +16,8 @@ export const styles = StyleSheet.create({
         fontSize: 24,
         color: 'black',
         marginBottom: 15,
-        marginTop: 3
+        marginTop: 3,
+
     },
     buttonContainer: {
         flex: 1,

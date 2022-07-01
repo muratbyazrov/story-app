@@ -1,5 +1,5 @@
 import store from '../../store/store.js';
-import {setAccountData} from "../../store/features/account/accountSlice.js";
+import {formSwitcher, modifyAccount, setAccountData} from "../../store/features/account/accountSlice.js";
 const {Base} = require('../base');
 import {accountConfig} from "../config.js";
 
@@ -27,6 +27,14 @@ class Account extends Base {
         } catch (err) {
             console.info(`SYSTEM [ERROR]:`, err);
         }
+    }
+
+    async modifyAccount (params) {
+        return this.httpAdapter({
+            domain: "accounts",
+            event: "modifyAccount",
+            params: {...params, accountId: store.getState().account.accountData.accountId}
+        });
     }
 }
 

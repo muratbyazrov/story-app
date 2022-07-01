@@ -12,8 +12,8 @@ const screen = Dimensions.get('window');
 export const ProfileScreen = () => {
     const dispatch = useDispatch();
     const accountData = useSelector(state => state.account.accountData);
-    const forms = useSelector(state => state.account.formsActive);
     const {firstName, birthday, photoUrl, job, education, goal, about, height, weight, interests} = accountData;
+    const forms = useSelector(state => state.account.formsActive);
 
     return (
         <SafeAreaView style={styles.container}>
@@ -78,13 +78,13 @@ export const ProfileScreen = () => {
                 </View>
             </ScrollView>
 
-            {forms.main && <Main data={accountData}/>}
-            {forms.education && <Education data={accountData}/>}
-            {forms.job && <Job data={accountData}/>}
-            {forms.interests && <Interests data={accountData}/>}
-            {forms.goal && <Goal data={accountData}/>}
-            {forms.about && <About data={accountData}/>}
-            {forms.personals && <Personals data={accountData}/>}
+            {forms.main && <Main/>}
+            {forms.education && <Education/>}
+            {forms.job && <Job/>}
+            {forms.interests && <Interests/>}
+            {forms.goal && <Goal/>}
+            {forms.about && <About/>}
+            {forms.personals && <Personals/>}
         </SafeAreaView>
     )
 }
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
         height: 100,
         alignItems: "center",
         justifyContent: "space-between",
-        marginBottom: 20,
+        marginBottom: 10,
         marginLeft: 15,
         marginRight: 15,
     }

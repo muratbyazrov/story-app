@@ -1,51 +1,63 @@
 import React from 'react';
 import {View, TextInput} from 'react-native';
 import FormButton from "./FormButton";
-import {TitleText} from "../TitleText";
-import {formSwitcher} from "../../../../../store/features/account/accountSlice";
-import {useDispatch} from "react-redux";
+import {formSwitcher, modifyAccount} from "../../../../../store/features/account/accountSlice";
+import {useDispatch, useSelector} from "react-redux";
 import {styles} from "./forms-styles.js";
+import {servers} from "../../../../../servers";
+import store from "../../../../../store/store";
+import {FormTitle} from "./form-title";
 
-export const Main = ({data}) => {
+export const Main = () => {
+    const {firstName, birthday, gender, city} = useSelector(state => state.account.accountData);
+
     const dispatch = useDispatch();
-    const [firstName, onChangeFirstName] = React.useState(data.firstName || 'Не указано');
-    const [birthday, onChangeBirthday] = React.useState(data.birthday || 'Не указано');
-    const [gender, onChangeGender] = React.useState(data.gender || 'Не указано');
-    const [city, onChangeCity] = React.useState(data.city || 'Не указано');
+    const [firstNameHook, onChangeFirstName] = React.useState(firstName || 'Не указано');
+    const [birthdayHook, onChangeBirthday] = React.useState(birthday || 'Не указано');
+    const [genderHook, onChangeGender] = React.useState(gender || 'Не указано');
+    const [cityHook, onChangeCity] = React.useState(city || 'Не указано');
+
+    const modifyAccountPress = async () => {
+        const {data} = await servers.account.modifyAccount({
+            firstName: firstNameHook, birthday: birthdayHook, gender: genderHook, city: cityHook
+        });
+        store.dispatch(modifyAccount(...data));
+        dispatch(formSwitcher('main'));
+    }
 
     return (
         <View style={styles.form}>
-            <TitleText text={`Имя`}/>
+            <FormTitle text={`Имя`}/>
             <TextInput
                 style={styles.input}
                 onChangeText={onChangeFirstName}
-                value={firstName}
+                placeholder={firstName}
             />
 
-            <TitleText text={`Дата рождения`}/>
+            <FormTitle text={`Дата рождения`}/>
             <TextInput
                 style={styles.input}
                 onChangeText={onChangeBirthday}
-                value={birthday}
+                placeholder={birthday}
             />
 
-            <TitleText text={`Пол`}/>
+            <FormTitle text={`Пол`}/>
             <TextInput
                 style={styles.input}
                 onChangeText={onChangeGender}
-                value={gender}
+                placeholder={gender}
             />
 
-            <TitleText text={`Местоположения`}/>
+            <FormTitle text={`Город`}/>
             <TextInput
                 style={styles.input}
                 onChangeText={onChangeCity}
-                value={city}
+                placeholder={city}
             />
 
             <View style={styles.buttonContainer}>
                 <FormButton text={'Отменить'} onPress={() => dispatch(formSwitcher('main'))}/>
-                <FormButton text={'Сохранить'}/>
+                <FormButton text={'Сохранить'} onPress={() => modifyAccountPress()}/>
             </View>
         </View>
     )
