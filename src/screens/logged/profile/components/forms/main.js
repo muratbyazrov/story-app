@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, TextInput} from 'react-native';
-import FormButton from "./FormButton";
+import FormButton from "./form-components/FormButton";
 import {formSwitcher, modifyAccount} from "../../../../../store/features/account/accountSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {styles} from "./forms-styles.js";
@@ -31,28 +31,28 @@ export const Main = () => {
             <TextInput
                 style={styles.input}
                 onChangeText={onChangeFirstName}
-                placeholder={firstName}
+                defaultValue={firstName}
             />
 
             <FormTitle text={`Дата рождения`}/>
             <TextInput
                 style={styles.input}
                 onChangeText={onChangeBirthday}
-                placeholder={birthday}
+                defaultValue={birthday}
             />
 
             <FormTitle text={`Пол`}/>
             <TextInput
                 style={styles.input}
                 onChangeText={onChangeGender}
-                placeholder={gender}
+                defaultValue={gender}
             />
 
             <FormTitle text={`Город`}/>
             <TextInput
                 style={styles.input}
                 onChangeText={onChangeCity}
-                placeholder={city}
+                defaultValue={city}
             />
 
             <View style={styles.buttonContainer}>

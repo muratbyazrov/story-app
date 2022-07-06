@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, TextInput} from 'react-native';
-import FormButton from "./FormButton";
+import FormButton from "./form-components/FormButton";
 import {formSwitcher, modifyAccount} from "../../../../../store/features/account/accountSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {styles} from "./forms-styles.js";
@@ -25,7 +25,9 @@ export const About = () => {
             <TextInput
                 style={styles.input}
                 onChangeText={onChangeAbout}
-                placeholder={about}
+                defaultValue={about}
+                multiline={true}
+                maxLength={40}
             />
             <View style={styles.buttonContainer}>
                 <FormButton text={'Отменить'} onPress={() => dispatch(formSwitcher('about'))}/>

@@ -10,7 +10,8 @@ export const styles = StyleSheet.create({
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
         bottom: 0,
-        minHeight: 300,
+        minHeight: 450,
+        justifyContent: "center",
     },
     input: {
         fontSize: 24,

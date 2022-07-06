@@ -64,7 +64,7 @@ export const ProfileScreen = () => {
                     <View>
                         <TitleText text={'Личные данные'}/>
                         <SmallText text={height ? `Рост: ${height} см` : 'Рост: не указано'}/>
-                        <SmallText text={weight ? `Вес: ${height} кг` : 'Вес: не указано'}/>
+                        <SmallText text={weight ? `Вес: ${weight} кг` : 'Вес: не указано'}/>
                     </View>
                     <Button onPress={() => dispatch(formSwitcher('personals'))}/>
                 </View>

@@ -13,5 +13,6 @@ export const FormTitle = ({text}) => {
 const styles = StyleSheet.create({
     text: {
         fontSize: 20,
+        color: 'gray'
     }
 });

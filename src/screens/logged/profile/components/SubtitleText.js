@@ -12,6 +12,7 @@ export const SubtitleText = ({text}) => {
 
 const styles = StyleSheet.create({
     text: {
-        fontSize: 28,
+        fontSize: 26,
+        marginBottom: 10
     }
 });

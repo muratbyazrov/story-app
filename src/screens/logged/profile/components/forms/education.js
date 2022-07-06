@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, TextInput} from 'react-native';
-import FormButton from "./FormButton";
+import FormButton from "./form-components/FormButton";
 import {formSwitcher, modifyAccount} from "../../../../../store/features/account/accountSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {styles} from "./forms-styles.js";
@@ -25,7 +25,7 @@ export const Education = () => {
             <TextInput
                 style={styles.input}
                 onChangeText={onChangeEducation}
-                placeholder={education}
+                defaultValue={education}
             />
 
             <View style={styles.buttonContainer}>
